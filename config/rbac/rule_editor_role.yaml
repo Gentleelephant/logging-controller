@@ -1,0 +1,31 @@
+# permissions for end users to edit rules.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: rule-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: logging-controller
+    app.kubernetes.io/part-of: logging-controller
+    app.kubernetes.io/managed-by: kustomize
+  name: rule-editor-role
+rules:
+- apiGroups:
+  - logging.birdhk.com
+  resources:
+  - rules
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - logging.birdhk.com
+  resources:
+  - rules/status
+  verbs:
+  - get

@@ -1,0 +1,12 @@
+apiVersion: logging.birdhk.com/v1
+kind: Rule
+metadata:
+  labels:
+    app.kubernetes.io/name: rule
+    app.kubernetes.io/instance: rule-sample
+    app.kubernetes.io/part-of: logging-controller
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: logging-controller
+  name: rule-sample
+spec:
+  # TODO(user): Add fields here
