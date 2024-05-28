@@ -73,7 +73,8 @@ build: manifests generate fmt vet ## Build manager binary.
 .PHONY: build-image
 build-image:
 	@echo "Building..."
-	docker buildx build --push --platform linux/amd64,linux/arm64 -f Dockerfile . -t ${EW_IMG}
+	#docker buildx build --push --platform linux/amd64,linux/arm64 -f Dockerfile . -t ${EW_IMG}
+	docker buildx build --push --platform linux/amd64 -f Dockerfile . -t ${EW_IMG}
 
 .PHONY: run
 run: manifests generate fmt vet ## Run a controller from your host.

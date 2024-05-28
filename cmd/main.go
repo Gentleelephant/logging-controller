@@ -134,6 +134,7 @@ func startServer() {
 	ws := new(restful.WebService)
 	ws.Route(ws.POST("/logs").To(handle))
 	restful.Add(ws)
+	log.Println("start server on port: " + sourcePort)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", sourcePort), nil))
 }
 
@@ -156,6 +157,10 @@ func writeFlow() {
 		select {
 		case data := <-cacheCh:
 			livingOP := controller.GetLivingOP()
+			if len(livingOP) == 0 {
+				fmt.Printf("received log: %s\n", data)
+				continue
+			}
 			for _, v := range livingOP {
 				go func(name string) {
 					lop := controller.GetLivingOP()
