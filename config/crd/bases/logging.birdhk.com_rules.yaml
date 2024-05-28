@@ -44,10 +44,13 @@ spec:
                 type: integer
               name:
                 type: string
+              parallelism:
+                default: 1
+                type: integer
               regex:
                 type: string
               slidingInterval:
-                type: string
+                type: integer
               type:
                 default: filter
                 enum:
@@ -55,7 +58,7 @@ spec:
                 - slidewindow
                 type: string
               windowSize:
-                type: string
+                type: integer
             type: object
           status:
             description: RuleStatus defines the observed state of Rule
