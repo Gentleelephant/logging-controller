@@ -62,4 +62,4 @@ jobs:
       - name: Build and Push image
         run: |
           tag=$(cat VERSION | tr -d " \t\n\r")
-          make build -e EW_IMG=${{ env.REPO_EW }}/logging-controller:$tag
+          make build-image -e EW_IMG=${{ env.REPO_EW }}/logging-controller:$tag

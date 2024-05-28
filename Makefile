@@ -70,6 +70,11 @@ test: manifests generate fmt vet envtest ## Run tests.
 build: manifests generate fmt vet ## Build manager binary.
 	go build -o bin/manager cmd/main.go
 
+.PHONY: build-image
+build-image:
+	@echo "Building..."
+	docker buildx build --push --platform linux/amd64,linux/arm64 -f Dockerfile . -t ${EW_IMG}
+
 .PHONY: run
 run: manifests generate fmt vet ## Run a controller from your host.
 	go run ./cmd/main.go
